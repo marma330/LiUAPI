@@ -3,6 +3,7 @@ library(magrittr)
 library(leaflet)
 library(httr)
 library(jsonlite)
+library(testthat)
 
 #internal function to parse
 parsing<-function(req)
@@ -11,7 +12,7 @@ if (identical(x,"")) warning ("HI AMIGO, THIS IS EMPTY! BE CAREFUL!")
 fromJSON(x)}
 
 
-place<-"Thorapadi"  #place input!
+place<-"Tehran"  #place input!
 f <- "AIzaSyAGdetT_wO2o2Q6LfHFVmEw7yxFnvVpCbo"
 
 latlong<-function(place,f)
@@ -28,6 +29,7 @@ latlong<-function(place,f)
   x$formatted_address
   list("latitude and longitude"=x$geometry$location, "Complete name" = x$formatted_address)
 }
+latlong(place,f)
 
 #example we did together
 #place1<-"rydsvagen 246"
@@ -41,7 +43,11 @@ latlong<-function(place,f)
 #z$distance
 
 
-z<-list(input="museums in linkoping",key="") #create the list of parameters I will send to google.
-place<-GET("https://maps.googleapis.com/maps/api/place/textsearch/json?",query=z) #this is the actual API connection.
-x<-parsing(place)
+#z<-list(input="museums in linkoping",key=f) #create the list of parameters I will send to google.
+#place<-GET("https://maps.googleapis.com/maps/api/place/textsearch/json?",query=z) #this is the actual API connection.
+#x<-parsing(place)
+
+
+devtools::use_testthat()
+
 

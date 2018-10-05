@@ -8,8 +8,10 @@ Maintainer: <pedka102@student.liu.se>
 Description: hi.
 License: GPL-2 
 RoxygenNote: 6.1.0
-LazyData: true
+LazyData: TRUE
 Encoding: UTF-8
 Suggests: knitr,
     rmarkdown,
      testthat,knitr,rmarkdown,shiny,magrittr,leaflet,httr,jsonlite
+
+
