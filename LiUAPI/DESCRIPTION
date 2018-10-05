@@ -1,0 +1,15 @@
+Package: LiUAPI
+Type: Package
+Title: This package gets connected with geocode API.
+Version: 1.0
+Date: 2018-10-01
+Author: Mariano, Pedram & Roshni
+Maintainer: <pedka102@student.liu.se>
+Description: hi.
+License: GPL-2 
+RoxygenNote: 6.1.0
+LazyData: true
+Encoding: UTF-8
+Suggests: knitr,
+    rmarkdown,
+     testthat,knitr,rmarkdown,shiny,magrittr,leaflet,httr,jsonlite
