@@ -103,7 +103,7 @@ mymap <- renderLeaflet({
 Enter the place name (Example: Linkoping), then enter the key and click the button "Find exact location"
 
 ```{r, out.width = "700px", echo=FALSE}
-knitr::include_graphics("C:/Users/roshn/Desktop/MS/Advanced R Prog/Lab/lab 5/5-master/5-master/Example.png")
+knitr::include_graphics("https://github.com/marma330/LiUAPI/vignettes/Example.PNG")
 ```
 
 ## Reference
