@@ -56,7 +56,7 @@ latlong<-function(place,f)
 distanfu<- function(place1,place2,f){
   if(grepl("[[:punct:]]",place1)) {stop("Error: Make sure your search is spelled correctly.what kinds of places are you looking for?and where?")}
   if(grepl("[[:punct:]]",place2)) {stop("Error: Make sure your search is spelled correctly.what kinds of places are you looking for?and where?")}
-  
+  if(place1 == place2){stop("The destenation needs to be diffrent from the origin")}
   z<-list(origin=place1,destination=place2,key=f)
   place<-GET("https://maps.googleapis.com/maps/api/directions/json",query=z) #this is the actual API connection.
   x<-parsing(place)

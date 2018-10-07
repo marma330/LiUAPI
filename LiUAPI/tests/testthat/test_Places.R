@@ -15,6 +15,6 @@ test_that("output is correct",{
   
   expect_equal(h$results$name[1] ,"Treptower Park")
   expect_equal(h$results$formatted_address[1] ,"Alt-Treptow, 12435 Berlin, Germany" )
-  
+  expect_equal(h$status,"OK")
 }
 )
