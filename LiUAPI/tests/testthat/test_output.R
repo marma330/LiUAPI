@@ -12,3 +12,18 @@ test_that("output is correct",{
 
 }
 )
+
+
+
+test_that("Error messages are returned for erronous input ",{
+  place <- "ira<$n"
+  f <- "AIzaSyAGdetT_wO2o2Q6LfHFVmEw7yxFnvVpCbo"
+ expect_error(latlong(place,f))
+  
+}
+)
+
+
+
+
+
