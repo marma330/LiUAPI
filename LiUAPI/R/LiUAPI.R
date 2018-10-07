@@ -76,8 +76,7 @@ distanfu<- function(place1,place2,f){
 #' and the key to the API
 #' @return it returns nearby places by detail.
 #' 
-
-
+#' @example     places("Berlin Parks" , f )
 places <- function(input,f){
   if(grepl("[[:punct:]]",input)) {stop("Error: Make sure your search is spelled correctly.what kinds of places are you looking for?and where?")}
   
