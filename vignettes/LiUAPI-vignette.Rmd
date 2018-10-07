@@ -1,10 +1,10 @@
 ---
-title: "API Vignette"
+title: "Google API"
 author: "Mariano, Roshni and Pedram"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{API Vignette}
+  %\VignetteIndexEntry{Google API}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -17,7 +17,7 @@ library(httr)
 library(jsonlite)
 ```
 
-This vignette summarizes functions of API package that gets connected with 3 APIs and gives examples on how to use them.
+This vignette summarizes functions of API package that gets connected with 3 google APIs and gives examples on how to use them.
 This package uses three APIs. They are,
 
 1. Google geocode api
@@ -25,6 +25,7 @@ This package uses three APIs. They are,
 3. Google place api
 
 The function "parsing" has been used as an internal function to parse the data.
+**Note: Enter the key in "z" **
 
 ```{r}
 #internal function to parse
@@ -34,14 +35,13 @@ if (identical(x,"")) warning ("HI AMIGO, THIS IS EMPTY! BE CAREFUL!")
 fromJSON(x)}
 ```
 
-**Note: Enter the key in "z" **
 The function "latlong" uses geocode api. It takes the place "name" as input and returns the exact latitude and longitude along with the formatted address.
 
 ```{r}
 latlong<-function(place)
   #place <- "Vellore"
 {
-   z<-list(address=place,key="") #create the list of parameters I will send to google.
+   z<-list(address=place,key="AIzaSyAGdetT_wO2o2Q6LfHFVmEw7yxFnvVpCbo") #create the list of parameters I will send to google.
   
  place<-GET("https://maps.googleapis.com/maps/api/geocode/json",query=z) #this is the actual API connection.
   
@@ -76,17 +76,17 @@ This function "nearby_place" uses google place api. It takes the place name as u
 ```{r}
 nearby_place<-function(placename)
 {
-  #placename="museums in stockholm"
+  #placename="museums in linkoping"
 z<-list(input=placename,key="") #create the list of parameters I will send to google.
 placename<-GET("https://maps.googleapis.com/maps/api/place/textsearch/json?",query=z) #this is the actual API connection.
 x<-parsing(placename)
 unlist(x)
 list("Nearby place names"=x$results$name, "Ratings" = x$results$rating)
 }
-
 ```
 
 The shiny app is created to visualize the exact location in map. Once the place name is entered, the output will be the text with latitude, longitude and the map pointing the exact location.
+
 
 ```{r}
 
@@ -98,6 +98,18 @@ mymap <- renderLeaflet({
                    lat = ~lat, popup="Location you was searching for")})
 ```
 
+## Example
 
-> "More to know how to render map outputs"
+Enter the place name (Example: Linkoping), then enter the key and click the button "Find exact location"
+
+```{r, out.width = "700px", echo=FALSE}
+knitr::include_graphics("C:/Users/roshn/Desktop/MS/Advanced R Prog/Lab/lab 5/5-master/5-master/Example.png")
+```
+
+## Reference
+
+1. "More to know how to render map outputs"
 ([via](https://shiny.rstudio.com/tutorial/written-tutorial/lesson5/))
+
+2. "More to know how to use leaflets for map outputs"
+([via](https://leafletjs.com/reference-1.3.4.html#map-example))
